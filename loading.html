@@ -15,7 +15,6 @@
 
       const wrapper = document.querySelector('.load-wrapper');
       wrapper.style=`--size:${l + padding}px`;
-      const eleList = [];
       let newEle = null;
       for (let i = 0; i < 8; i++) {
         const size = min + i * xs;
@@ -32,8 +31,7 @@
         position: relative;
         width: var(--size);
         height: var(--size);
-        /* animation: turning 3s linear 0s infinite; */
-        /* border: 1px solid red; */
+        animation: turning 3s linear 0s infinite;
       }
       .load-item {
         position: absolute;
@@ -43,7 +41,6 @@
         height: var(--size);
         background-color: #4E86EB;
         border-radius: 50%;
-        /* border: 1px solid green; */
       } 
       @keyframes turning {
         0% {
