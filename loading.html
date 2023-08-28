@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>让css动画</title>
+  </head>
+  <body>
+    <div class="load-wrapper"></div>
+    <script typescript>
+      const l = 16;
+      const r = 8;
+      const min = 2;
+      const xs = 0.4;
+      const padding = min + 8 * xs;
+
+      const wrapper = document.querySelector('.load-wrapper');
+      wrapper.style=`--size:${l + padding}px`;
+      const eleList = [];
+      let newEle = null;
+      for (let i = 0; i < 8; i++) {
+        const size = min + i * xs;
+        const x = r + r * Math.cos(i * Math.PI / 4) + (padding - size)/2;
+        const y = r + r * Math.sin(i * Math.PI / 4) + (padding - size)/2;
+        newEle = document.createElement('div');
+        newEle.className = 'load-item';
+        newEle.style = `--x:${x}px;--y:${y}px;--size:${size}px`;
+        wrapper.appendChild(newEle);
+      }
+    </script>
+    <style>
+      .load-wrapper {
+        position: relative;
+        width: var(--size);
+        height: var(--size);
+        /* animation: turning 3s linear 0s infinite; */
+        /* border: 1px solid red; */
+      }
+      .load-item {
+        position: absolute;
+        left: var(--x);
+        top: var(--y);
+        width: var(--size);
+        height: var(--size);
+        background-color: #4E86EB;
+        border-radius: 50%;
+        /* border: 1px solid green; */
+      } 
+      @keyframes turning {
+        0% {
+          transform: rotate(0);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </body>
+</html>
